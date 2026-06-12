@@ -1,0 +1,1257 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --cream: #F7F3EE;
+  --warm-white: #FDFAF6;
+  --forest: #2C4A3E;
+  --forest-light: #3D6B5C;
+  --mountain: #1A2E28;
+  --gold: #C9A96E;
+  --gold-light: #E8C98A;
+  --stone: #8B7355;
+  --stone-light: #C4B49A;
+  --text-dark: #1C1C1C;
+  --text-mid: #4A4A4A;
+  --text-light: #7A7A7A;
+  --shadow: rgba(26, 46, 40, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-dark-bg: rgba(26, 46, 40, 0.15);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  /* Защита от авто-изменения размера текста на смартфонах */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--warm-white);
+  color: var(--text-dark);
+  overflow-x: hidden; /* Жесткая защита от горизонтального скролла */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  /* Убираем синее выделение при клике на ссылки на мобильных */
+  -webkit-tap-highlight-color: transparent; 
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================================================
+   2. FIX / HEADER (SITE HEADER)
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: transparent;
+}
+
+.site-header.scrolled {
+  background: rgba(26, 46, 40, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 6px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-menu a {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-menu a:hover {
+  color: var(--gold-light);
+}
+
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.btn-header {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-header:hover {
+  background: var(--gold);
+  color: var(--mountain);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 4px; 
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid transparent; 
+  color: rgba(255, 255, 255, 0.7); 
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px; 
+  border-radius: 4px; 
+  transition: all 0.3s ease-in-out; 
+}
+
+.lang-btn:hover:not(.active) {
+  color: #ffffff;
+}
+
+.lang-btn.active {
+  color: var(--gold);
+  border-color: var(--gold); 
+  font-weight: 600;
+}
+
+/* Поддержка скрытия/показа текста внутри кнопки, если используются span */
+.btn-header .text-mobile {
+  display: none;
+}
+
+/* ==========================================================================
+   3. HERO SECTION
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 650px; 
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-color: var(--mountain); 
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 46, 40, 0.65) 0%,
+    transparent 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 100px;
+  width: 100%;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-label::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5.5vw, 80px); 
+  font-weight: 300;
+  line-height: 1.15;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.hero-subtitle {
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 16px 36px;
+  transition: all 0.3s;
+}
+
+.btn-main:hover {
+  background: var(--gold);
+  color: var(--mountain);
+  border-color: var(--gold);
+  gap: 20px;
+  box-shadow: 0 12px 35px rgba(201, 169, 110, 0.2);
+}
+
+.hero-scroll {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-line {
+  width: 30px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.hero-stats {
+  position: absolute;
+  right: 40px;
+  bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  z-index: 2;
+}
+
+.hero-stat {
+  text-align: right;
+}
+
+.hero-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================================================
+   4. ABOUT SECTION
+   ========================================================================== */
+.about-section {
+  padding: 120px 0;
+  background: var(--warm-white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.about-header-block {
+  max-width: 800px;
+  margin-bottom: 60px;
+}
+
+.about-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 300;
+  line-height: 1.25;
+  color: var(--mountain);
+  margin-bottom: 24px;
+}
+
+.about-heading em {
+  font-style: italic;
+  color: var(--forest);
+}
+
+.about-intro-text {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--text-mid);
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 20px;
+  border: 1px solid rgba(44, 74, 62, 0.08);
+  background: rgba(44, 74, 62, 0.01);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.feature-item:hover {
+  background: rgba(44, 74, 62, 0.04);
+  border-color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.feature-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.feature-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mountain);
+}
+
+.feature-desc {
+  font-size: 12px;
+  color: var(--text-light);
+  line-height: 1.5;
+}
+
+.about-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px;
+}
+
+.sunny-card {
+  position: relative;
+  height: 380px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(26, 46, 40, 0.04);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.sunny-card:hover {
+  transform: scale(1.02);
+}
+
+.sunny-card:hover .sunny-img-box img {
+  transform: scale(1.08);
+}
+
+.sunny-img-box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.sunny-img-box img {
+  transition: transform 0.6s ease;
+}
+
+.sunny-glass-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(26, 46, 40, 0.45); 
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.sunny-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 19px; 
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+.sunny-card-tag {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold-light);
+}
+
+/* ==========================================================================
+   5. MAP BLOCK
+   ========================================================================== */
+.about-map-block {
+  margin-top: 110px;
+  text-align: center;
+}
+
+.map-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--mountain);
+  margin-bottom: 10px;
+}
+
+.map-subtext {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 45px;
+}
+
+.about-map-wrapper {
+  width: 100%;
+  position: relative;
+  background: linear-gradient(135deg, var(--warm-white) 0%, var(--cream) 100%);
+  padding: 20px; 
+  border-radius: 24px;
+  border: 1px solid rgba(201, 169, 110, 0.28); 
+  box-shadow: 
+    0 10px 35px rgba(26, 46, 40, 0.02),
+    0 35px 80px rgba(26, 46, 40, 0.05),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-map-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(44, 74, 62, 0.08);
+  border-radius: 18px;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.about-map-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 19px;
+  border: 1px solid rgba(201, 169, 110, 0.15);
+  border-radius: 13px;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.about-map-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: rgba(201, 169, 110, 0.5);
+  box-shadow: 
+    0 15px 40px rgba(26, 46, 40, 0.04),
+    0 45px 95px rgba(26, 46, 40, 0.1);
+}
+
+.about-map-wrapper:hover::before {
+  border-color: rgba(44, 74, 62, 0.15);
+}
+
+.about-map-wrapper:hover::after {
+  border-color: var(--gold);
+}
+
+.about-map-wrapper iframe {
+  display: block;
+  border-radius: 12px; 
+  filter: grayscale(0.1) sepia(0.08) contrast(1.01);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-map-wrapper:hover iframe {
+  filter: grayscale(0) sepia(0) contrast(1);
+}
+
+/* ==========================================================================
+   6. ROOMS SECTION (ОПТИМИЗИРОВАНО ПОД 35 000 ₸ ДЛЯ ВСЕХ)
+   ========================================================================== */
+.rooms-section {
+  padding: 120px 0;
+  background: var(--cream);
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(34px, 4.5vw, 50px);
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--mountain);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--forest);
+}
+
+.room-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.02);
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  margin-bottom: 40px; 
+}
+
+.room-gallery-container {
+  height: 100%;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+.room-side-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+}
+
+.room-side-img-box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.room-side-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.room-side-img-box:hover img {
+  transform: scale(1.04);
+}
+
+.room-info {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.room-type {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.room-type::before {
+  content: '';
+  width: 25px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.room-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--mountain);
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.room-desc {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+}
+
+.room-amenities {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 36px;
+}
+
+.amenity-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  padding: 16px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(26, 46, 40, 0.02); 
+  transition: all 0.3s ease;
+}
+
+.amenity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(26, 46, 40, 0.06);
+  border-color: rgba(201, 169, 110, 0.3);
+}
+
+.amenity-icon {
+  font-size: 22px;
+}
+
+.amenity-text {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--mountain);
+  line-height: 1.3;
+}
+
+/* Цена 35 000 ₸ */
+.price-container {
+  display: flex;
+  margin-bottom: 36px;
+  border: 1px solid rgba(201, 169, 110, 0.22);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+}
+
+.price-period {
+  flex: 1;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.price-period:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(201, 169, 110, 0.25);
+}
+
+.price-period.highlight {
+  background: rgba(201, 169, 110, 0.04);
+}
+
+.month {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cost {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--mountain);
+  white-space: nowrap; 
+}
+
+.cost small {
+  font-size: 14px;
+  color: var(--text-light);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.include {
+  font-size: 11px;
+  color: var(--forest);
+  font-weight: 500;
+}
+
+.btn-book {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--forest);
+  padding: 18px 36px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  align-self: flex-start;
+}
+
+.btn-book:hover {
+  background: var(--mountain);
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(26, 46, 40, 0.15);
+}
+
+/* ==========================================================================
+   7. SITE FOOTER
+   ========================================================================== */
+.site-footer {
+  position: relative;
+  padding-top: 100px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.footer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 46, 40, 0.99) 0%,
+    rgba(26, 46, 40, 0.94) 100%
+  );
+}
+
+.footer-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 50px;
+}
+
+.footer-brand .logo {
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.footer-tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.footer-col p, .footer-col a {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 2;
+  transition: color 0.3s;
+  display: block;
+}
+
+.footer-col a:hover {
+  color: var(--gold-light);
+}
+
+.footer-phone {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px !important;
+  color: #fff !important;
+  font-weight: 400 !important;
+  margin: 6px 0;
+}
+
+.footer-wa {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--gold) !important;
+  font-weight: 500 !important;
+}
+
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(201, 169, 110, 0.2), transparent);
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-bottom {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ==========================================================================
+   8. MEDIA QUERIES & RESPONSIVENESS (МАГИЯ ДЛЯ МОБИЛЬНЫХ)
+   ========================================================================== */
+
+/* Планшеты и небольшие ноутбуки */
+@media (max-width: 1024px) {
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .about-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .room-card {
+    grid-template-columns: 1fr;
+  }
+
+  .room-gallery-container {
+    min-height: 400px;
+    height: 400px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Смартфоны (Полная премиум-адаптация) */
+@media (max-width: 768px) {
+  /* Идеальные безопасные отступы для шапки, элементы не сжимаются */
+  .site-header {
+    padding: 12px 0;
+  }
+
+  .site-header.scrolled {
+    padding: 10px 0;
+  }
+
+  .header-container {
+    padding: 0 16px;
+    gap: 10px; /* Фиксированный контролируемый зазор */
+  }
+
+  .nav-menu {
+    display: none; /* Скрыто под мобильное бургер-меню */
+  }
+
+  .logo {
+    font-size: 19px;
+    letter-spacing: 2px;
+    white-space: nowrap;
+    flex-shrink: 0; /* Намертво защищаем логотип от деформации */
+  }
+
+  /* Переключатель языков на смартфонах */
+  .lang-switcher {
+    gap: 0px; 
+    margin-left: auto; /* Прижимает языки и кнопку вправо, делая отступ от логотипа */
+  }
+
+  .lang-btn {
+    font-size: 11px;
+    padding: 4px 5px;
+  }
+
+  /* Кнопка "Забронировать" становится изящной и аккуратной */
+  .btn-header {
+    display: block; 
+    padding: 8px 14px;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    flex-shrink: 0; /* Кнопка больше не сжимается по ширине */
+  }
+
+  /* Если ты добавил span-теги в HTML для смены текста */
+  .btn-header .text-desktop {
+    display: none;
+  }
+  .btn-header .text-mobile {
+    display: inline;
+  }
+
+  /* Остальные секции (Hero, About, Rooms) */
+  .hero-content {
+    padding: 0 20px 60px;
+  }
+
+  .hero-title {
+    font-size: 38px !important; 
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch; 
+    gap: 16px;
+  }
+
+  .btn-main {
+    justify-content: center;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .hero-scroll {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .hero-stats {
+    display: none; 
+  }
+
+  .about-section, .rooms-section {
+    padding: 60px 0; 
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .about-header-block {
+    margin-bottom: 36px;
+  }
+
+  .about-heading {
+    font-size: 28px !important;
+    line-height: 1.3;
+  }
+
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .feature-item {
+    padding: 16px;
+  }
+
+  .about-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .sunny-card {
+    height: 320px;
+    border-radius: 12px; 
+  }
+
+  .sunny-glass-overlay {
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 14px;
+  }
+
+  .room-card {
+    border-radius: 16px;
+  }
+
+  .room-gallery-container {
+    min-height: 280px;
+    height: 280px;
+  }
+
+  .room-info {
+    padding: 30px 20px;
+  }
+
+  .room-title {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .room-desc {
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+
+  .room-amenities {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .amenity-card {
+    padding: 12px 6px;
+    border-radius: 8px;
+  }
+
+  .price-container {
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .price-period {
+    padding: 14px 16px;
+  }
+
+  .price-period:not(:last-child) {
+    border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+  }
+
+  .price-period:not(:last-child)::after {
+    display: none;
+  }
+
+  .cost {
+    font-size: 24px;
+  }
+
+  .btn-book {
+    width: 100%;
+    justify-content: center;
+    padding: 16px;
+    align-self: stretch;
+  }
+  
+  .about-map-block {
+    margin-top: 60px;
+  }
+
+  .map-heading {
+    font-size: 28px;
+  }
+  
+  .about-map-wrapper {
+    padding: 8px; 
+    border-radius: 16px;
+  }
+  
+  .about-map-wrapper::before,
+  .about-map-wrapper::after {
+    display: none; 
+  }
+  
+  .about-map-wrapper iframe {
+    height: 300px; 
+    border-radius: 10px;
+  }
+
+  .site-footer {
+    padding-top: 60px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 20px 40px;
+  }
+
+  .footer-brand .logo {
+    font-size: 26px;
+  }
+
+  .footer-col h4 {
+    margin-bottom: 12px;
+  }
+
+  .footer-bottom {
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* 📲 Экстремально узкие экраны телефонов (iPhone SE / старые смартфоны до 360px) */
+@media (max-width: 365px) {
+  .header-container {
+    padding: 0 10px;
+    gap: 4px;
+  }
+
+  .logo {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .lang-btn {
+    font-size: 10px;
+    padding: 4px 4px;
+  }
+
+  .btn-header {
+    padding: 7px 10px;
+    font-size: 9px;
+    letter-spacing: 0px;
+  }
+}
