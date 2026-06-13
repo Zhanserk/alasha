@@ -4,8 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   ru: {
     translation: {
-      // Шапка и общие элементы
-      "nav_about": "О нас",
+      "nav_about": "О нас И жансерикке валотавлптвалпт",
       "nav_rooms": "Номера",
       "nav_contacts": "Контакты",
       "btn_book": "Забронировать",
