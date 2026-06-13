@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   ru: {
     translation: {
-      "nav_about": "О нас",
+      "nav_about": "О нас  И простой проверка от мобилного адаптацтии",
       "nav_rooms": "Номера",
       "nav_contacts": "Контакты",
       "btn_book": "Забронировать",
