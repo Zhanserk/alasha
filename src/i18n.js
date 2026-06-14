@@ -4,7 +4,7 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   ru: {
     translation: {
-      "nav_about": "О нас",
+      "nav_about": "О нас Акжунис хорошо девочка и любит жопу",
       "nav_rooms": "Номера",
       "nav_contacts": "Контакты",
       "btn_book": "Забронировать",
