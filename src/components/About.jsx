@@ -71,7 +71,7 @@ export default function About() {
           <p className="map-subtext">{t('location_desc')}</p>
           <div className="about-map-wrapper">
             <iframe 
-              src="https://maps.google.com/maps?q=%D0%9A%D0%B0%D1%82%D0%BE%D0%BD-%D0%9A%D0%B0%D1%80%D0%B0%D0%B3%D0%B0%D0%B9%20%D0%A2%D0%BE%D1%80%D0%B0%D0%B9%D0%B3%D1%8B%D1%80%D0%BE%D0%B2%D0%B0%20%D0%90%D0%B1%D0%B0%D1%8F&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2608.56864209321!2d85.58948137648247!3d49.170795371376286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDnCsDEwJzE0LjkiTiA4NcKwMzUnMzEuNCJF!5e0!3m2!1sru!2skz!4v1781599397243!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
               width="100%" 
               height="450" 
               style={{ border: 0 }} 
