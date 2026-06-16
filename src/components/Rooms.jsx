@@ -82,6 +82,15 @@ export default function Rooms() {
               target="_blank"
               rel="noreferrer"
               className="btn-book"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.gtag) {
+                  window.gtag('event', 'conversion', {
+                    'send_to': 'AW-17844260471/DUFTCNyi3t0bEPec57xC',
+                    'value': 1.0,
+                    'currency': 'USD'
+                  });
+                }
+              }}
             >
               {t('btn_book_wa')}
             </a>

@@ -26,19 +26,24 @@ export default function Footer() {
           <a href="#contacts">{t('nav_contacts')}</a>
         </div>
 
-        
-
         <div className="footer-col">
           <h4>{t('nav_contacts')}</h4>
           <p>{t('footer_address')}</p>
           <a href="tel:+77788883338" className="footer-phone">+7 (778) 888 33 38</a>
           <a
-
-            
             href="https://wa.me/77788883338"
             target="_blank"
             rel="noreferrer"
             className="footer-wa"
+            onClick={() => {
+              if (typeof window !== 'undefined' && window.gtag) {
+                window.gtag('event', 'conversion', {
+                  'send_to': 'AW-17844260471/DUFTCNyi3t0bEPec57xC',
+                  'value': 1.0,
+                  'currency': 'USD'
+                });
+              }
+            }}
           >
             WhatsApp
           </a>
