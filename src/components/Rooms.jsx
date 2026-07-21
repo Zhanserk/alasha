@@ -12,6 +12,7 @@ import roomImg2 from '../assets/images/photo_2026-06-16_11-39-02.jpg';
 import roomImg1 from '../assets/images/photo_2026-06-16_11-39-05.jpg';
 import roomImg5 from '../assets/images/IMG_1192.JPG';
 import roomImg6 from '../assets/images/IMG_1194.JPG';
+import roomImg7 from '../assets/images/IMG_1195.JPG';
 
 const roomImages = [
   { src: roomImg3, alt: 'Номер с видом', pos: 'center 60%' },
@@ -19,7 +20,8 @@ const roomImages = [
   { src: roomImg5, alt: 'Интерьер номера', pos: 'center center' },
   { src: roomImg6, alt: 'Спальня номера',  pos: 'center center' },
   { src: roomImg1, alt: 'Ванная',        pos: 'center center' },
-  { src: roomImg2, alt: 'Удобства',      pos: 'center 40%' },
+  { src: roomImg7, alt: 'Удобства',      pos: 'center 40%' },
+  { src: roomImg2, alt: 'Ванная2',      pos: 'center 40%' },
 ];
 
 const ArrowLeft = () => (
@@ -534,6 +536,7 @@ export default function Rooms() {
             <div className="price-notes">
               <p>• {t('price_note_kids')}</p>
               <p>• {t('price_note_meals')}</p>
+              <p>• {t('price_note_sell')}</p>
             </div>
 
             <a

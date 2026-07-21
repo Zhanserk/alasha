@@ -62,6 +62,8 @@ const resources = {
       "price_inc_2": "20 000 ₸ / чел.",
       "price_note_kids": "Детям до 6 лет проживание бесплатно",
       "price_note_meals": "Трёхразовое питание предоставляется за дополнительную плату",
+      "price_note_sell": "На август предусмотрены скидки",
+
 
       // Подвал (Footer)
       "footer_desc": "Eco-hotel у подножия Алтайских гор. Место, где природа говорит тихо — и это лучшее, что можно услышать.",
@@ -126,6 +128,9 @@ const resources = {
       "price_inc_2": "20 000 ₸ / адам",
       "price_note_kids": "6 жасқа дейінгі балаларға тұру тегін",
       "price_note_meals": "Күніне 3 рет тамақтану қосымша ақыға беріледі",
+      "price_note_sell": "Тамыз айына жеңілдіктер қарастырылған",
+
+      
 
       "footer_desc": "Алтай тауларының бөктеріндегі эко-қонақ үй. Табиғат ақырын сөйлейтін орын — және бұл естуге болатын ең жақсы нәрсе.",
       "footer_nav": "Навигация",
@@ -189,6 +194,8 @@ const resources = {
       "price_inc_2": "20 000 ₸ / person",
       "price_note_kids": "Children under 6 stay free",
       "price_note_meals": "Full board (3 meals a day) available for an extra charge",
+      "price_note_sell": "Discounts are provided for August",
+      
 
       "footer_desc": "Eco-hotel at the foot of the Altai Mountains. A place where nature speaks quietly — and this is the best thing you can hear.",
       "footer_nav": "Navigation",
