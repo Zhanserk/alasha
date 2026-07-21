@@ -10,10 +10,14 @@ import roomImg3 from '../assets/images/photo_2026-06-16_11-38-58.jpg';
 import roomImg4 from '../assets/images/photo_2026-06-16_11-39-00.jpg';
 import roomImg2 from '../assets/images/photo_2026-06-16_11-39-02.jpg';
 import roomImg1 from '../assets/images/photo_2026-06-16_11-39-05.jpg';
+import roomImg5 from '../assets/images/IMG_1192.JPG';
+import roomImg6 from '../assets/images/IMG_1194.JPG';
 
 const roomImages = [
   { src: roomImg3, alt: 'Номер с видом', pos: 'center 60%' },
   { src: roomImg4, alt: 'Вид номера',    pos: 'center 50%' },
+  { src: roomImg5, alt: 'Интерьер номера', pos: 'center center' },
+  { src: roomImg6, alt: 'Спальня номера',  pos: 'center center' },
   { src: roomImg1, alt: 'Ванная',        pos: 'center center' },
   { src: roomImg2, alt: 'Удобства',      pos: 'center 40%' },
 ];
@@ -511,8 +515,7 @@ export default function Rooms() {
             <div className="room-amenities">
               <div className="amenity-card"><span className="amenity-icon">🛁</span><span className="amenity-text">{t('room_feat1')}</span></div>
               <div className="amenity-card"><span className="amenity-icon">🪟</span><span className="amenity-text">{t('room_feat2')}</span></div>
-              <div className="amenity-card"><span className="amenity-icon">🌿</span><span className="amenity-text">{t('room_feat3')}</span></div>
-              <div className="amenity-card"><span className="amenity-icon">🍳</span><span className="amenity-text">{t('room_feat4')}</span></div>
+              <div className="amenity-card"><span className="amenity-icon">🏞️</span><span className="amenity-text">{t('room_feat3')}</span></div>
             </div>
 
             <div className="price-container">
@@ -524,8 +527,13 @@ export default function Rooms() {
               <div className="price-period highlight">
                 <span className="month">{t('room_5bed')}</span>
                 <span className="cost">{t('price_per_night_35')}</span>
-                <span className="include">{t('price_inc')}</span>
+                <span className="include">{t('price_inc_2')}</span>
               </div>
+            </div>
+
+            <div className="price-notes">
+              <p>• {t('price_note_kids')}</p>
+              <p>• {t('price_note_meals')}</p>
             </div>
 
             <a

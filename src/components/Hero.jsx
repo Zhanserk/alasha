@@ -33,17 +33,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-
-      <div className="hero-stats">
-        <div className="hero-stat">
-          <div className="hero-stat-num">2300</div>
-          <div className="hero-stat-label">{t('hero_stat1')}</div>
-        </div>
-        <div className="hero-stat">
-          <div className="hero-stat-num">3×</div>
-          <div className="hero-stat-label">{t('hero_stat2')}</div>
-        </div>
-      </div>
     </section>
   );
 }

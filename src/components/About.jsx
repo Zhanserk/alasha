@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import imgPanorama from '../assets/images/photo_2026-06-03_15-58-14.jpg'; 
-import imgFence from '../assets/images/photo_2026-06-03_18-31-24.jpg';    
+import imgFence from '../assets/images/IMG_1193.JPG';    
 import imgForest from '../assets/images/photo_2026-06-03_15-40-17.jpg';   
 import imgWindow from '../assets/images/photo_2026-06-03_15-39-52.jpg';   
 
@@ -36,7 +36,7 @@ export default function About() {
             <span className="feature-desc">{t('feature1_desc')}</span>
           </div>
           <div className="feature-item">
-            <span className="feature-icon">🌲</span>
+            <span className="feature-icon">🏞️</span>
             <span className="feature-name">{t('feature2_title')}</span>
             <span className="feature-desc">{t('feature2_desc')}</span>
           </div>
@@ -71,7 +71,7 @@ export default function About() {
           <p className="map-subtext">{t('location_desc')}</p>
           <div className="about-map-wrapper">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2608.56864209321!2d85.58948137648247!3d49.170795371376286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDnCsDEwJzE0LjkiTiA4NcKwMzUnMzEuNCJF!5e0!3m2!1sru!2skz!4v1781599397243!5m2!1sru!2skz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2608.56864209321!2d85.58948137648247!3d49.170795371376286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDnCsDEwJzE0LjkiTiA4NcKwMzUnMzEuNCJF!5e0!3m2!1sru!2skz!4v1781599397243!5m2!1sru!2skz" 
               width="100%" 
               height="450" 
               style={{ border: 0 }} 
