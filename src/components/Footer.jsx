@@ -29,7 +29,7 @@ export default function Footer() {
         <div className="footer-col">
           <h4>{t('nav_contacts')}</h4>
           <p>{t('footer_address')}</p>
-          <a href="tel:+77027532918" className="footer-phone">+7(702) 753 29 18</a>
+          <a href="tel:+77027532918" className="footer-phone">+7(778) 888 3338</a>
           <a
             href="https://wa.me/+77027532918"
             target="_blank"

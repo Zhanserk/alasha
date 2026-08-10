@@ -46,7 +46,7 @@ export default function Header() {
           </div>
 
           <a
-            href="https://wa.me/+77027532918"
+            href="https://wa.me/+7git 7788883338"
             target="_blank"
             rel="noreferrer"
             className="btn-header"
