@@ -540,7 +540,7 @@ export default function Rooms() {
             </div>
 
             <a
-              href="https://wa.me/+77788883338"
+              href="https://wa.me/+77788383831"
               target="_blank" rel="noreferrer"
               className="btn-book"
               onClick={() => {
